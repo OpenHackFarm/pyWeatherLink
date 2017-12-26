@@ -110,6 +110,9 @@ class Link:
         img.RainDay = float(struct.unpack("<H", buf[50:52])[0])* 0.2
         
         img.OutdoorDewpoint = dewpoint_approximation(img.OutdoorTemperature, img.OutdoorRelativeHumidity)
+
+        img.SolarRadiation = struct.unpack("<H", buf[44:46])[0]
+        img.UVI = struct.unpack("<B", buf[42])[0]
         
         stationcrc = struct.unpack(">H", buf[97:100])[0]
         
