@@ -22,7 +22,7 @@ import serial
 import struct
 import time
 
-from conversions import dewpoint_approximation, f2c, inHg2hPa, mph2kts
+from conversions import *
 
 from datatypes import SensorImage#, ArchiveImage
 from crc import CRC_CCITT
@@ -95,8 +95,8 @@ class Link:
             raise Exception("Start of block was not LOO")
             
         img = SensorImage()
-        img.WindSpeed = mph2kts(struct.unpack("<B", buf[14])[0])
-        img.AverageWindSpeed = mph2kts(struct.unpack("<B", buf[15])[0])
+        img.WindSpeed = mph2ms(struct.unpack("<B", buf[14])[0])
+        img.AverageWindSpeed = mph2ms(struct.unpack("<B", buf[15])[0])
         img.WindDirection = struct.unpack("<H", buf[16:18])[0]
         img.IndoorTemperature = f2c(float(struct.unpack("<H", buf[9:11])[0])/10)
         img.IndoorRelativeHumidity = struct.unpack("<B", buf[11])[0]
