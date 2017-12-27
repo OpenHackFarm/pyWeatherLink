@@ -33,7 +33,7 @@ class Link:
         self.wakeup()
         self.setTime()
         
-        self.getModel()
+        #self.getModel()
         #self.getVersion()
 
     def __del__(self):
