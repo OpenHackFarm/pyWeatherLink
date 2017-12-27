@@ -28,6 +28,10 @@ def mph2kts(mph):
     kts = mph * 0.868976242
     return int(round(kts, 0))
 
+def mph2ms(mph):
+    ms = mph * 0.44704
+    return round(ms, 1)
+
 def inHg2hPa(inHg):
     return inHg * 33.8638816
 
