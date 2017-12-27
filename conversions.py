@@ -33,7 +33,7 @@ def mph2ms(mph):
     return round(ms, 1)
 
 def inHg2hPa(inHg):
-    return inHg * 33.8638816
+    return round(inHg * 33.8638816, 1)
 
 # constants
 a = 17.271
