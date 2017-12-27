@@ -42,5 +42,5 @@ def gamma(T,RH):
 def dewpoint_approximation(T, RH):
     gm = gamma(T,RH)
     Td = (b * gm) / (a - gm)
-    
-    return Td
+
+    return round(Td, 1)
