@@ -71,6 +71,6 @@ if __name__ == "__main__":
 
     # upload to weather underground
     w = urllib2.urlopen(WUNDERGROUND_UPDATEURL +
-                        "&humidity=%s&tempf=%s&UV=%s&pressure=%s&winddir=%s&windspeedmph=%s" % (simg.OutdoorRelativeHumidity, simg.OutdoorTemperature, simg.UVI, simg.QFE, simg.WindDirection, simg.WindSpeed))
+                        "&humidity=%s&tempf=%s&UV=%s&baromin=%s&winddir=%s&windspeedmph=%s&rainin=%s&solarradiation=%s" % (simg.OutdoorRelativeHumidity, simg.OutdoorTemperature, simg.UVI, simg.QFE, simg.WindDirection, simg.WindSpeed, simg.RainRate, simg.SolarRadiation))
     print w.read()
     w.close()
