@@ -95,21 +95,21 @@ class Link:
             raise Exception("Start of block was not LOO")
             
         img = SensorImage()
-        img.WindSpeed = mph2ms(struct.unpack("<B", buf[14])[0])
-        img.AverageWindSpeed = mph2ms(struct.unpack("<B", buf[15])[0])
+        img.WindSpeed = struct.unpack("<B", buf[14])[0]
+        img.AverageWindSpeed = struct.unpack("<B", buf[15])[0]
         img.WindDirection = struct.unpack("<H", buf[16:18])[0]
-        img.IndoorTemperature = f2c(float(struct.unpack("<H", buf[9:11])[0])/10)
+        img.IndoorTemperature = float(struct.unpack("<H", buf[9:11])[0])/10
         img.IndoorRelativeHumidity = struct.unpack("<B", buf[11])[0]
-        img.OutdoorTemperature = f2c(float(struct.unpack("<H", buf[12:14])[0])/10)
+        img.OutdoorTemperature = float(struct.unpack("<H", buf[12:14])[0])/10
         img.OutdoorRelativeHumidity = struct.unpack("<B", buf[33])[0]
-        img.QFE = inHg2hPa(float(struct.unpack("<H", buf[7:9])[0])/1000.0)
+        img.QFE = float(struct.unpack("<H", buf[7:9])[0])/1000.0
         img.QFETrend = struct.unpack("<b", buf[3])[0]
         img.Forecast = struct.unpack("<B", buf[89])[0]
         
         img.RainRate = float(struct.unpack("<H", buf[41:43])[0]) * 0.2
         img.RainDay = float(struct.unpack("<H", buf[50:52])[0])* 0.2
         
-        img.OutdoorDewpoint = dewpoint_approximation(img.OutdoorTemperature, img.OutdoorRelativeHumidity)
+        img.OutdoorDewpoint = dewpoint_approximation(f2c(img.OutdoorTemperature), img.OutdoorRelativeHumidity)
 
         img.SolarRadiation = struct.unpack("<H", buf[44:46])[0]
         img.UVI = struct.unpack("<B", buf[42])[0]
