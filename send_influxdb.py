@@ -64,7 +64,7 @@ if __name__ == "__main__":
         "rain_1hr_mm": simg.RainRate,
         "rain_24hr_mm": simg.RainDay,
         "radiation_Wm2": simg.SolarRadiation,
-        "UVI": simg.UVI
+        "UVI": int(round(simg.UVI))
     }
 
     upload_to_influxdb(INFLUXDB_MEASUREMENT, tags, fields)

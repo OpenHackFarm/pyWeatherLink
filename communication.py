@@ -112,7 +112,7 @@ class Link:
         img.OutdoorDewpoint = dewpoint_approximation(f2c(img.OutdoorTemperature), img.OutdoorRelativeHumidity)
 
         img.SolarRadiation = struct.unpack("<H", buf[44:46])[0]
-        img.UVI = struct.unpack("<B", buf[42])[0]
+        img.UVI = struct.unpack("<B", buf[43])[0] / 10.0
         
         stationcrc = struct.unpack(">H", buf[97:100])[0]
         
